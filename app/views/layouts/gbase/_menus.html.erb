@@ -1,0 +1,67 @@
+<nav class="navbar navbar-inverse" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#"><%= Rails.application.class.parent_name %></a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+			<li></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			 <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                    	<% if user_signed_in? %>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user" style="padding-right: 10px;"></i>
+                                <span><%= current_user.email %> <i class="caret"></i></span>
+                            </a>
+                        <% end %>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header bg-light-blue">
+                                <img src="<%=asset_path 'gbase/default_user.png'%>" class="img-circle" alt="User Image" />
+
+                                <p>
+                                    <%= current_user.email if user_signed_in? %>
+                                    <small>Membro desde <!--%= current_user.created_at.to_s(:data_br) if user_signed_in?  %--></small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#"></a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <!--%= link_to 'Alterar', edit_user_path(current_user) if user_signed_in? %-->
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#"></a>
+                                </div>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <!--div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div-->
+                                <div class="pull-right">
+                                    <% if user_signed_in? %>
+										<%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => "btn btn-default btn-flat" %>
+									<% end %>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</nav>
+
+
+
