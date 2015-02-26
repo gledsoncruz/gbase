@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require jquery.cookie
 //= require twitter/bootstrap
+//= require bootstrapValidator.min
+//= require bootstrap-select
 //= require_tree .

@@ -1,0 +1,13 @@
+<%= bootstrap_form_for(@user, layout: :vertical, inline_errors: true) do |f| %>
+  <div class="row">
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+      <%= f.text_field :name %>
+      <%= f.email_field :email %>
+      <%= f.password_field :password %>
+      <%= f.password_field :password_confirmation, label: "Confirm Password" %>
+      <%= f.select(:role, Gbase::User.roles.keys.map {|role| [role.titleize,role]}, {prompt: false}, {:class => "selectpicker"}) %>
+      <%= f.submit "Salvar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", users_path, :class => "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

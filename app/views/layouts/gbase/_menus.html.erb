@@ -21,7 +21,7 @@
                     	<% if user_signed_in? %>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user" style="padding-right: 10px;"></i>
-                                <span><%= current_user.email %> <i class="caret"></i></span>
+                                <span><%= current_user.name %> <i class="caret"></i></span>
                             </a>
                         <% end %>
                         <ul class="dropdown-menu">
@@ -30,8 +30,8 @@
                                 <img src="<%=asset_path 'gbase/default_user.png'%>" class="img-circle" alt="User Image" />
 
                                 <p>
-                                    <%= current_user.email if user_signed_in? %>
-                                    <small>Membro desde <!--%= current_user.created_at.to_s(:data_br) if user_signed_in?  %--></small>
+                                    <%= current_user.name if user_signed_in? %>
+                                    <small>Membro desde <%= current_user.created_at.to_s(:data_br) if user_signed_in?  %></small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -40,7 +40,7 @@
                                     <a href="#"></a>
                                 </div>
                                 <div class="col-xs-4 text-center">
-                                    <!--%= link_to 'Alterar', edit_user_path(current_user) if user_signed_in? %-->
+                                    <%= link_to 'Perfil', user_path(current_user) if user_signed_in? %>
                                 </div>
                                 <div class="col-xs-4 text-center">
                                     <a href="#"></a>

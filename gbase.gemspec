@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency 'bootstrap-select-rails'
   s.add_dependency 'ransack'
+  s.add_dependency 'bootstrap_form'
 
   s.add_development_dependency "sqlite3"
 end

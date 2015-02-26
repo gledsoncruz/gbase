@@ -20,6 +20,13 @@ module Gbase
 	    content_tag :spam, nil, class: names.map{|name| "glyphicon glyphicon-#{name.to_s.gsub('_','-')}" }
 	end
 
+	def edit_new(titulo)
+	   content_tag(:div, "",:class => "panel panel-default") do
+	    content_tag(:div, content_tag(:i, "",:class => "glyphicon glyphicon-pencil", :style => "padding-right: 10px;")+titulo, :class => "panel-heading")+
+	    content_tag(:div, render(partial: 'form'),:class => "panel-body")
+	   end
+	end
+
 
 	def hindex(titulo, link, hpartial, lista, hsearch_field)
 

@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  *= require twitter/bootstrap
+ *= require bootstrapValidator.min
+ *= require bootstrap-select
+ *= require rails_bootstrap_forms
  */
 
 html,
@@ -29,6 +32,7 @@ a:focus {
 #login {
     margin-top: 25%;
 }
+
 
 /*
     Navbar custom dropdown menu

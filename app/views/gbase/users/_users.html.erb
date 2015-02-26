@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th>Nome</th>
     <th>Email</th>
     <th>Acessos</th>
     <th>Último acesso</th>
@@ -12,9 +13,14 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.sign_in_count %></td>
-        <td><%= user.last_sign_in_at.to_s(:data_br) %> às <%= user.last_sign_in_at.to_s(:hora) %></td>
+        <% if not user.last_sign_in_at.blank? %>
+          <td><%= user.last_sign_in_at.to_s(:data_br) %> às <%= user.last_sign_in_at.to_s(:hora) %></td>
+        <% else %>
+          <td>Nenhum acesso</td>
+        <% end %>
         <td><%= user.last_sign_in_ip.to_s %></td>
         <td><%= user.created_at.to_s(:data_br) %></td>
         <td style="text-align: center;"><%= link_to '', user, :class => 'glyphicon glyphicon-search', :title => 'Visualizar' %></td>
