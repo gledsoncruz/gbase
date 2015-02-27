@@ -1,5 +1,8 @@
 module Gbase
   	class User < ActiveRecord::Base
+
+  		include PublicActivity::Model
+  		tracked owner: Proc.new { |controller, model| controller.current_user ? controller.current_user : nil }
 	    # Include default devise modules. Others available are:
 	    # :confirmable, :lockable, :timeoutable and :omniauthable
 	    devise :database_authenticatable, :registerable,
