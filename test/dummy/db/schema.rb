@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226204923) do
+ActiveRecord::Schema.define(version: 20150228205930) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20150226204923) do
     t.string   "recipient_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
