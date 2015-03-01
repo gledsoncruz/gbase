@@ -1,0 +1,10 @@
+<%= bootstrap_form_for(@modulo, layout: :vertical, inline_errors: true) do |f| %>
+  <div class="row">
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+      <%= f.text_field :name %>
+      <%= f.text_field :descricao %>
+      <%= f.submit "Salvar", class: "btn btn-success" %>
+      <%= link_to "Cancelar", modulos_path, :class => "btn btn-danger" %>
+    </div>
+  </div>
+<% end %>

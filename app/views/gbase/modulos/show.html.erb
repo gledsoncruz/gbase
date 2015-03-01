@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+	<div class="panel-heading"><i class="glyphicon glyphicon-user" style="padding-right: 10px;"></i>Módulo</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h3><%= @modulo.name if @modulo.name %></h3>
+				<dl class="dl-vertical">
+				  <dt>Nome:</dt>
+				  <dd><%= @modulo.name if @modulo.name %></dd>
+				  <dt>Email:</dt>
+				  <dd><%= @modulo.descricao if @modulo.descricao %></dd>
+				</dl>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="well">
+					<%= link_to glyph(:"arrow-left") + " Voltar", modulos_path, :class => "btn btn-danger" %>
+					<%= link_to glyph(:"pencil") + " Alterar", edit_modulo_path(@modulo), :class => 'btn btn-warning' %>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

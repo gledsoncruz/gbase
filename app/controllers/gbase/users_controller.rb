@@ -16,7 +16,7 @@ module Gbase
     	@user = User.new(secure_params)
     	respond_to do |format|
 	      if @user.save
-	        format.html { redirect_to @user, notice: 'user criado com sucesso.' }
+	        format.html { redirect_to @user, notice: 'Usuário criado com sucesso.' }
 	        format.json { render :show, status: :created, location: @user }
 	      else
 	        format.html { render :new }
