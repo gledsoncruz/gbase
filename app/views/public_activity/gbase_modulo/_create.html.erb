@@ -5,6 +5,6 @@
   <% if a.trackable %>
     adicionou módulo <%= link_to a.trackable.name, modulo_path(a.trackable) %>.
   <% else %>
-    adicionou um módulo <strong><%= a.trackable.name %></strong> que já foi deletado.
+    adicionou um módulo <strong><%= a.name %></strong> que já foi deletado.
   <% end %>
 </li>

@@ -4,33 +4,26 @@
     <th>Nome</th>
     <th>Descrição</th>
     <th>Data do Registro</th>
-    <th colspan=4 style="text-align: center;">Ações</th>
+    <th colspan=3 style="text-align: center;">Ações</th>
   </tr>
   </thead>
   <tbody>
-    <% @modulos.each do |m| %>
+    <% @menus.each do |m| %>
       <tr>
-        <td><%= m.name %></td>
+        <td><%= m.nome %></td>
         <td><%= m.descricao %></td>
         <td><%= m.created_at.to_s(:data_br) %></td>
         <td style="text-align: center;"><%= link_to '', m, :class => 'glyphicon glyphicon-search', :title => 'Visualizar' %></td>
 
-          <td style="text-align: center;"><%= link_to '', edit_modulo_path(m), :class => 'glyphicon glyphicon-pencil', :title => 'Editar' %></td>
+          <td style="text-align: center;"><%= link_to '', edit_menu_path(m), :class => 'glyphicon glyphicon-pencil', :title => 'Editar' %></td>
 
             <td style="text-align: center;">
             	<%= link_to '', m, :class => 'glyphicon glyphicon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %>
 
             </td>
-
-            <td style="text-align: center;">
-              <%= link_to '', version_history_path(m), :class => 'glyphicon glyphicon-hourglass' %>
-
-            </td>
-
-
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= will_paginate @modulos, :previous_label => t("Anterior"), :next_label => t("Próximo"), renderer: BootstrapPagination::Rails %>
+<%= will_paginate @menus, :previous_label => t("Anterior"), :next_label => t("Próximo"), renderer: BootstrapPagination::Rails %>

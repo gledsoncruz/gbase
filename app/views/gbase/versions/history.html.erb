@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+  	<th>ID</th>
+    <th>Name</th>
+    <th>Descricao</th>
+    <th>Modificado</th>
+    <th>Evento</th>
+    <th>Usuário</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% (0..@reifies.count-1).reverse_each do |i| %>
+      <tr>
+        <td><%= @reifies[i].versions[i].id  %></td>
+      	<td><%= @reifies[i].name  %></td>
+        <td><%= @reifies[i].descricao %></td>
+        <td><%= @reifies[i].versions[i].created_at.to_s(:data_br) %> - <%= @reifies[i].versions[i].created_at.to_s(:hora) %></td>
+        <td><%= @reifies[i].versions[i].event  %></td>
+        <td><%= Gbase::User.find(@reifies[i].versions[i].whodunnit).name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

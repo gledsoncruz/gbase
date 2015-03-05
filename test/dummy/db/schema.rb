@@ -11,29 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150301013234) do
+ActiveRecord::Schema.define(version: 20150305141852) do
 
-  create_table "activities", force: true do |t|
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.string   "key"
-    t.text     "parameters"
-    t.integer  "recipient_id"
-    t.string   "recipient_type"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "gbase_menus", force: true do |t|
+    t.string   "nome",       limit: 80,  null: false
+    t.string   "descricao",  limit: 120, null: false
+    t.string   "link",       limit: 30,  null: false
+    t.integer  "modulo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
-  add_index "activities", ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-  add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-  add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+  add_index "gbase_menus", ["descricao"], name: "index_gbase_menus_on_descricao", using: :btree
 
   create_table "gbase_modulos", force: true do |t|
-    t.string   "name"
-    t.string   "descricao"
+    t.string   "name",       limit: 80,  null: false
+    t.string   "descricao",  limit: 120, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "gbase_modulos", ["name"], name: "index_gbase_modulos_on_name", using: :btree
+
+  create_table "gbase_permissions", primary_key: "user_id", force: true do |t|
+    t.integer  "modulo_id",  null: false
+    t.integer  "menu_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150301013234) do
     t.integer  "role",                                           null: false
   end
 
-  add_index "gbase_users", ["email"], name: "index_gbase_users_on_email", unique: true
-  add_index "gbase_users", ["reset_password_token"], name: "index_gbase_users_on_reset_password_token", unique: true
+  add_index "gbase_users", ["email"], name: "index_gbase_users_on_email", unique: true, using: :btree
+  add_index "gbase_users", ["reset_password_token"], name: "index_gbase_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "versions", force: true do |t|
     t.string   "item_type",  null: false
@@ -67,6 +72,12 @@ ActiveRecord::Schema.define(version: 20150301013234) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  add_foreign_key "gbase_menus", "gbase_modulos", name: "gbase_menus_gbase_modulo_id_fk", column: "modulo_id"
+
+  add_foreign_key "gbase_permissions", "gbase_menus", name: "gbase_permissions_gbase_menu_id_fk", column: "menu_id"
+  add_foreign_key "gbase_permissions", "gbase_modulos", name: "gbase_permissions_gbase_modulo_id_fk", column: "modulo_id"
+  add_foreign_key "gbase_permissions", "gbase_users", name: "gbase_permissions_gbase_user_id_fk", column: "user_id"
 
 end

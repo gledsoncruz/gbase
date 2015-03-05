@@ -1,8 +1,7 @@
 module Gbase
   class ApplicationController < ActionController::Base
-  	include PublicActivity::StoreController
+  	#include PublicActivity::StoreController
   	before_action :authenticate_user!
-
 
 
 	#def current_user

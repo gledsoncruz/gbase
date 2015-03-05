@@ -9,6 +9,7 @@ module Gbase
 
     def show
         @modulo = Modulo.find(params[:id])
+        @versions = @modulo.versions.reverse &:created_at
         respond_to do |format|
             format.html
             format.json { render :json => @modulo.to_json }

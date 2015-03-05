@@ -28,8 +28,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'bootstrap-select-rails'
   s.add_dependency 'ransack'
   s.add_dependency 'bootstrap_form'
-  s.add_dependency 'public_activity'
+  #s.add_dependency 'public_activity'
   s.add_dependency 'paper_trail', '~> 4.0.0.beta'
+  s.add_dependency 'foreigner'
+  s.add_dependency 'composite_primary_keys'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pg"
 end

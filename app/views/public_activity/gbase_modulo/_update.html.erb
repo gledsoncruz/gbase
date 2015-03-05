@@ -5,6 +5,6 @@
   <% if a.trackable %>
     alterou módulo <%= link_to a.trackable.name, modulo_path(a.trackable) %>.
   <% else %>
-    edited the story that is currently deleted.
+    alterou o módulo <strong><%= a.name %></strong> que já foi deletado.
   <% end %>
 </li>

@@ -2,26 +2,28 @@
 
 <div class="row">
 	<div class="panel-group" id="accordion">
-	  <div class="panel panel-default">
-	    <div class="panel-heading">
-	      <h4 class="panel-title">
-	        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-	          Administração
-	        </a>
-	      </h4>
-	    </div>
-	    <div id="collapseOne" class="panel-collapse collapse">
-	      <div class="panel-body">
-	        <table class="table" id="menus">
-                <tr>
-                    <td>
-                        <span class="glyphicon glyphicon-user text-primary"></span>
-                        <%= link_to 'Usuários', users_path if user_signed_in? %>
-                    </td>
-                </tr>
-	        </table>
-	      </div>
-	    </div>
-	  </div>
+	  	<% current_user.modulos.distinct.sort.each do |p| %>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= p.id.to_s %>"><span class="glyphicon glyphicon-folder-close">
+                        </span><%= p.name %></a>
+                    </h4>
+                </div>
+                <div id="collapse<%= p.id.to_s %>" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <table class="table" id="menus">
+                        	<% p.menus.sort.each do |menu| %>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-user text-primary"></span><a href="<%= menu.link %>"><%= menu.nome %></a>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <% end %>
 	</div>
 </div>

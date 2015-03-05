@@ -8,6 +8,12 @@ module Gbase
 		#has_paper_trail :only => [:name, :email]
 	    # Include default devise modules. Others available are:
 	    # :confirmable, :lockable, :timeoutable and :omniauthable
+
+	    has_many :permissions, :dependent => :destroy
+		has_many :modulos, through: :permissions
+		has_many :menus, through: :permissions
+
+
 	    devise :database_authenticatable, :registerable,
 	           :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
