@@ -17,7 +17,7 @@ module Gbase
 	    devise :database_authenticatable, :registerable,
 	           :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
-	    enum role: [:admin, :user]
+	    enum role: [:super, :admin, :user]
 		after_initialize :set_default_role, :if => :new_record?
 
 		def set_default_role

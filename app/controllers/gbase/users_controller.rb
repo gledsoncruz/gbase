@@ -4,16 +4,19 @@ module Gbase
   class UsersController < ApplicationController
 
     def index
+    	authorize User
     	@q = User.search(params[:q])
     	@users = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
     end
 
     def new
     	@user = User.new
+    	authorize current_user
     end
 
     def create
     	@user = User.new(secure_params)
+    	authorize current_user
     	respond_to do |format|
 	      if @user.save
 	        format.html { redirect_to @user, notice: 'Usuário criado com sucesso.' }
@@ -31,6 +34,7 @@ module Gbase
 	      params[:user].delete(:password_confirmation)
 	    end
     	@user = User.find(params[:id])
+    	authorize @user
 	    if @user.update_attributes(secure_params)
 	      sign_in(@user, :bypass => true) if @user == current_user
 	      redirect_to user_path, :flash => { :success => 'Usuário alterado com sucesso.' }
@@ -41,6 +45,7 @@ module Gbase
 
     def show
 	    @user = User.find(params[:id])
+	    authorize @user
 	    respond_to do |format|
 	        format.html
 	        format.json { render :json => @user.to_json }
@@ -49,10 +54,12 @@ module Gbase
 
     def edit
     	@user = User.find(params[:id])
+    	authorize @user
     end
 
     def destroy
 	    user = User.find(params[:id])
+	    authorize user
 	    user.destroy
 	    redirect_to users_path, :notice => "Usuário excluído com sucesso."
 	end

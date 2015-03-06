@@ -2,7 +2,10 @@ require_dependency "gbase/application_controller"
 
 module Gbase
   class ModulosController < ApplicationController
+    after_action :verify_authorized
+
     def index
+        authorize Modulo
         @q = Modulo.search(params[:q])
         @modulos = @q.result(distinct: true).paginate(:page => params[:page], :per_page => 10).order(created_at: :desc)
     end

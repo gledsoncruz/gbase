@@ -1,15 +1,17 @@
 module Gbase
   class ApplicationController < ActionController::Base
-  	#include PublicActivity::StoreController
+  	include Pundit
+  	protect_from_forgery
   	before_action :authenticate_user!
 
+  	rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-	#def current_user
-	  #@current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-	#end
+	  private
 
-	#helper_method :current_user
-	#hide_action :current_user
+	  def user_not_authorized
+	    flash[:alert] = "Acesso não autorizado, entre em contato com o administrador."
+	    redirect_to(request.referrer || Rails.application.routes.url_helpers.root_path)
+	  end
 
   end
 end

@@ -12,6 +12,7 @@ PATH
       jquery-rails (~> 3.1.1)
       less-rails-bootstrap
       paper_trail (~> 4.0.0.beta)
+      pundit
       rails (~> 4.1.6)
       ransack
       therubyracer
@@ -95,6 +96,8 @@ GEM
     pg (0.18.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    pundit (0.3.0)
+      activesupport (>= 3.0.0)
     rack (1.5.2)
     rack-test (0.6.3)
       rack (>= 1.0)

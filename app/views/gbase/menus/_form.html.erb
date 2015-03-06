@@ -4,6 +4,7 @@
       <%= f.text_field :nome %>
       <%= f.text_field :descricao %>
       <%= f.text_field :link %>
+      <%= f.text_field :icone %>
       <%= f.collection_select(:modulo_id, @modulos, :id, :name, {prompt: false}, {:class => "selectpicker"}) %>
       <%= f.submit "Salvar", class: "btn btn-success" %>
       <%= link_to "Cancelar", modulos_path, :class => "btn btn-danger" %>
