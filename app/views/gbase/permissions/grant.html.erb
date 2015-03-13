@@ -1,0 +1,41 @@
+<%= bootstrap_form_for(@permission) do |f| %>
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="glyphicon glyphicon-lock" style="padding-right: 10px;"></i>
+				Permissões - <%= @user.name %>
+			</h3>
+	  	</div>
+	  	<div class="panel-body">
+	  		<%= f.hidden_field 'user', :id => 'user', :value => @user.id %>
+		  	<% @modulos.each do |modulo| %>
+			  	<div class="table-responsive">
+			  		<table class="table table-hover table-striped table-bordered">
+			  			<thead>
+		  					<tr>
+		  						<th><%= modulo.name %></th>
+		  						<th style="text-align: center;">Listar</th>
+		  						<th style="text-align: center;">Criar</th>
+		  						<th style="text-align: center;">Alterar</th>
+		  						<th style="text-align: center;">Deletar</th>
+		  					</tr>
+			  			</thead>
+			  			<tbody>
+			  				<% modulo.menus.sort.each do |menu| %>
+			  					<tr>
+			  						<td><%= menu.nome %></td>
+			  						<td style="text-align: center;"><%= check_box_tag 'permission[listar][]', menu.id, @user.permissions.select{|p| p.listar? && p.menu.nome == menu.nome}.any? %></td>
+			  						<td style="text-align: center;"><%= check_box_tag 'permission[criar][]', menu.id, @user.permissions.select{|p| p.criar? && p.menu.nome == menu.nome}.any? %></td>
+			  						<td style="text-align: center;"><%= check_box_tag 'permission[alterar][]', menu.id, @user.permissions.select{|p| p.alterar? && p.menu.nome == menu.nome}.any? %></td>
+			  						<td style="text-align: center;"><%= check_box_tag 'permission[apagar][]', menu.id, @user.permissions.select{|p| p.apagar? && p.menu.nome == menu.nome}.any? %></td>
+			  					</tr>
+			  				<% end %>
+
+			  			</tbody>
+			  		</table>
+			  	</div>
+		  	<% end %>
+		  	<%= f.button glyph(:"ok") + "  "+:submit, :id => "btn_salvar", :class => "btn btn-success" %>
+	  	</div>
+	</div>
+<% end %>

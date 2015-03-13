@@ -12,6 +12,5 @@ module Gbase
 	    flash[:alert] = "Acesso não autorizado, entre em contato com o administrador."
 	    redirect_to(request.referrer || Rails.application.routes.url_helpers.root_path)
 	  end
-
   end
 end

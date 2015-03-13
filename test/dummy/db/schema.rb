@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305185911) do
+ActiveRecord::Schema.define(version: 20150311204846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20150305185911) do
     t.integer  "menu_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "listar"
+    t.boolean  "criar"
+    t.boolean  "alterar"
+    t.boolean  "apagar"
   end
 
   create_table "gbase_users", force: true do |t|
@@ -59,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150305185911) do
     t.datetime "updated_at"
     t.string   "name",                   limit: 80,              null: false
     t.integer  "role",                                           null: false
+    t.boolean  "approved"
   end
 
   add_index "gbase_users", ["email"], name: "index_gbase_users_on_email", unique: true, using: :btree

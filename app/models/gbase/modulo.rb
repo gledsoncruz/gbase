@@ -12,7 +12,7 @@ module Gbase
 	has_paper_trail
 	has_many :permissions
 	has_many :users, through: :permissions
-	has_many :menus, through: :permissions
+	has_many :menus#, through: :permissions
 
 	validates :name, :descricao, presence: true
 

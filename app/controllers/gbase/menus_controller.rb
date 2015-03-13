@@ -4,6 +4,7 @@ module Gbase
 
   	class MenusController < ApplicationController
   		before_action :set_modulo, only: [:show, :edit, :update, :destroy]
+  		before_action :auth_menu
 
 
 	    def index
@@ -66,8 +67,12 @@ module Gbase
 		      	@menu = Menu.find(params[:id])
 		    end
 		    def menu_params
-		    	params.require(:menu).permit(:nome, :descricao, :link, :modulo_id)
+		    	params.require(:menu).permit(:nome, :descricao, :link, :icone, :modulo_id)
 		    end
+		    def auth_menu
+      			authorize Menu
+    		end
+
 
   	end
 

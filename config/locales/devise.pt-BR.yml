@@ -5,6 +5,7 @@ pt-BR:
       send_instructions: Dentro de minutos, você receberá um email com as instruções de confirmação da sua conta.
       send_paranoid_instructions: Se o seu email existir em nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta em alguns minutos.
     failure:
+      not_approved: 'Conta bloqueada, entre em contato com o administrador.'
       already_authenticated: Você já está autenticado.
       inactive: A sua conta ainda não foi ativada.
       invalid: Email ou senha inválidos.
@@ -34,6 +35,7 @@ pt-BR:
         forgot_password: Esqueci minha senha
         send_instructions: Enviar instruções
     registrations:
+      signed_up_but_not_approved: 'Você se inscreveu com sucesso, mas a sua conta não foi aprovado pelo administrador ainda'
       destroyed: Adeus! A sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
       signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.

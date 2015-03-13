@@ -1,7 +1,7 @@
 module Gbase
   class UserPolicy < ApplicationPolicy
 
-	def show?
+	  def show?
     	current_user.super? or current_user == model
   	end
 

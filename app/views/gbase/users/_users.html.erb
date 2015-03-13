@@ -7,7 +7,7 @@
     <th>Último acesso</th>
     <th>IP</th>
     <th>Data do Registro</th>
-    <th colspan=3 style="text-align: center;">Ações</th>
+    <th colspan=4 style="text-align: center;">Ações</th>
   </tr>
   </thead>
   <tbody>
@@ -26,12 +26,14 @@
         <td style="text-align: center;"><%= link_to '', user, :class => 'glyphicon glyphicon-search', :title => 'Visualizar' %></td>
 
           <td style="text-align: center;"><%= link_to '', edit_user_path(user), :class => 'glyphicon glyphicon-pencil', :title => 'Editar' %></td>
+          <td style="text-align: center;"><%= link_to '', permissions_grant_path(user), :class => 'glyphicon glyphicon-lock', :title => 'Permissões' %></td>
 
             <td style="text-align: center;">
-            	<% unless user.admin? %>
+            	<% unless user.super? %>
             	<%= link_to '', user, :class => 'glyphicon glyphicon-trash', :method => :delete, :data => { :confirm => 'Are you sure?' }, :title => 'Apagar' %>
             	<% end %>
             </td>
+
 
 
       </tr>

@@ -1,0 +1,39 @@
+<%= bootstrap_form_for(@user) do |f| %>
+	<div class="panel panel-default">
+	  	<div class="panel-heading">
+			<h3 class="panel-title">
+				<i class="glyphicon glyphicon-lock" style="padding-right: 10px;"></i>
+				Permissões - <%= @user.name %>
+			</h3>
+	  	</div>
+	  	<div class="panel-body">
+		  	<% for modulo in Gbase::Modulo.order(descricao: :asc) %>
+			  	<div class="table-responsive">
+			  		<table class="table table-hover table-striped table-bordered">
+			  			<thead>
+		  					<tr>
+		  						<th><%= modulo.name %></th>
+		  						<th>Listar</th>
+		  						<th>Criar</th>
+		  						<th>Alterar</th>
+		  						<th>Deletar</th>
+		  					</tr>
+			  			</thead>
+			  			<tbody>
+			  				<% modulo.menus.sort.each do |menu| %>
+			  					<tr>
+			  						<td><%= menu.nome %></td>
+			  						<td><%= check_box_tag :list %></td>
+			  						<td>checkbox</td>
+			  						<td>checkbox</td>
+			  						<td>checkbox</td>
+			  					</tr>
+			  				<% end %>
+
+			  			</tbody>
+			  		</table>
+			  	</div>
+		  	<% end %>
+	  	</div>
+	</div>
+<% end %>
