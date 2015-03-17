@@ -6,5 +6,7 @@ module Gbase
   	belongs_to :user, :foreign_key => [:user_id]
   	belongs_to :menu, :foreign_key => [:menu_id]
 
+
+
   end
 end
