@@ -4,6 +4,7 @@ class ApplicationPolicy
   def initialize(current_user, model)
     @current_user = current_user
     @model = model
+    @permissions = @current_user.permissions rescue []
   end
 
   def index?

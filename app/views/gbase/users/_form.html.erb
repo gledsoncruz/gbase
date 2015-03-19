@@ -6,6 +6,8 @@
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation, label: "Confirm Password" %>
       <%= f.select(:role, Gbase::User.roles.keys.map {|role| [role.titleize,role]}, {prompt: false}, {:class => "selectpicker"}) %>
+
+      <%= f.check_box :approved, label: "Bloqueado?" %>
       <%= f.submit "Salvar", class: "btn btn-success" %>
       <%= link_to "Cancelar", users_path, :class => "btn btn-danger" %>
     </div>
