@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20150311204846) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  Foreigner.load
   add_foreign_key "gbase_menus", "gbase_modulos", name: "gbase_menus_gbase_modulo_id_fk", column: "modulo_id"
 
   add_foreign_key "gbase_permissions", "gbase_menus", name: "gbase_permissions_gbase_menu_id_fk", column: "menu_id"

@@ -1,0 +1,8 @@
+Gbase::User.create(name: 'Administrador', email: 'admin@admin.com', password: 'admin123', role: 0, approved: true)
+Gbase::Modulo.create(name: 'Administração', descricao: 'Módulo de administração do sistema')
+Gbase::Menu.create(nome: 'Usuários', descricao: 'Controle de usuários', modulo_id: 1, link: '/gbase/users', icone: 'glyphicon glyphicon-user')
+Gbase::Menu.create(nome: 'Módulos', descricao: 'Controle de módulos', modulo_id: 1, link: '/gbase/modulos', icone: 'glyphicon glyphicon-th-large')
+Gbase::Menu.create(nome: 'Menus', descricao: 'Controle de menus', modulo_id: 1, link: '/gbase/menus', icone: 'glyphicon glyphicon-th-list')
+Gbase::Permission.create(user_id: 1, modulo_id: 1, menu_id: 1, listar: true, criar: true, alterar: true, apagar: true)
+Gbase::Permission.create(user_id: 1, modulo_id: 1, menu_id: 2, listar: true, criar: true, alterar: true, apagar: true)
+Gbase::Permission.create(user_id: 1, modulo_id: 1, menu_id: 3, listar: true, criar: true, alterar: true, apagar: true)

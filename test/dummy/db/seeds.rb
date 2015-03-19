@@ -1,0 +1,1 @@
+Gbase::Engine.load_seed
