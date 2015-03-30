@@ -3,37 +3,6 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     	<div class="panel-group" id="accordion">
-            <% unless current_user.super? %>
-                <div class="panel panel-default">
-                      <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_perfil">
-                                    <span class="glyphicon glyphicon-folder-close">
-                                </span>Perfil</a>
-                            </h4>
-                      </div>
-                      <div id="collapse_perfil" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <table class="table" id="perfil">
-                                        <tr>
-                                            <td>
-                                                <span class="glyphicon glyphicon-user text-primary"></span>
-                                                <%= link_to "Perfil", current_user %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="glyphicon glyphicon-remove-circle text-danger"></span>
-                                                <%= link_to "Logout", destroy_user_session_path, :method => :delete, :class => 'text-danger' %>
-                                            </td>
-                                        </tr>
-
-                                </table>
-                            </div>
-                        </div>
-                </div>
-            <% end %>
-
     	  	<% current_user.modulos.distinct.sort.each do |p| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">

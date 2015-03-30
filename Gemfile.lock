@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gbase (0.0.2)
+    gbase (0.0.4)
       bootstrap-select-rails
       bootstrap-validator-rails
       bootstrap_form
@@ -117,7 +117,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    ransack (1.6.3)
+    ransack (1.6.4)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       activesupport (>= 3.0)
