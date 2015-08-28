@@ -5,7 +5,8 @@
       <%= f.text_field :descricao %>
       <%= f.text_field :link %>
       <%= f.text_field :icone %>
-      <%= f.collection_select(:modulo_id, @modulos, :id, :name, {prompt: false}, {:class => "selectpicker"}) %>
+      <%= f.collection_select(:modulo_id, Gbase::Modulo.all, :id, :name, {prompt: false}, {:class => "selectpicker"}) %>
+      <!--%= f.select(:modulo_id, Gbase::Modulo.all, {prompt: false}, {:class => "selectpicker"}) %-->
       <%= f.submit "Salvar", class: "btn btn-success" %>
       <%= link_to "Cancelar", modulos_path, :class => "btn btn-danger" %>
     </div>

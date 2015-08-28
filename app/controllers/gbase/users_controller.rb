@@ -67,7 +67,7 @@ module Gbase
     private
 
 	  def secure_params
-	    params.require(:user).permit(:role, :name, :email, :password, :password_confirmation)
+	    params.require(:user).permit(:role, :name, :email, :password, :password_confirmation, :approved)
 	  end
 
   end

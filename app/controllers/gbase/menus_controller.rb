@@ -20,6 +20,7 @@ module Gbase
 	    end
 
 	    def edit
+
 	    end
 
 	    def update
@@ -64,7 +65,8 @@ module Gbase
 
 	    private
 		    def set_modulo
-		      	@menu = Menu.find(params[:id])
+		    	@menu = Menu.find(params[:id])
+		      	#@modulo = Modulo.find(@menu.modulo_id)
 		    end
 		    def menu_params
 		    	params.require(:menu).permit(:nome, :descricao, :link, :icone, :modulo_id)
